@@ -4,47 +4,21 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
-  background-color: #fcfcfc;
+  background-color: #ffffff;
 }
 
-.navbar {
+.custom-navbar {
   height: 60px;
-  background-color: #fef7e5;
+  background-color: #272626;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Mover la barra hacia la derecha */
   align-items: center;
   padding: 0 20px;
-  z-index: 1000;
+  margin-right: auto; /* Ajuste para mover la barra al centro */
 }
 
-.navbar.hidden {
-  transform: translateY(-100%);
-  transition: transform 0.3s ease-in-out;
-}
-
-.nav-link {
-  font-size: 16px;
-  font-weight: 400;
-  color: #2f234f;
-  text-decoration: none;
-  padding: 10px;
-}
-
-.nav-link.active {
-  color: #574c4c;
-  font-weight: 500;
-  position: relative;
-}
-
-.nav-link.active::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #574c4c;
-}
 
 .menu-icon {
   display: none;
@@ -52,24 +26,29 @@ body {
 }
 
 .nav-elements {
-  display: none;
-}
-
-.nav-elements.active {
-  display: block;
-}
-
-.nav-elements ul {
-  list-style-type: none;
+  display: flex;
+  justify-content: flex-end; /* Mueve los botones a la derecha */
+  align-items: center;
+  flex-grow: 1;
+  list-style: none; /* Elimina los puntos de los elementos de la lista */
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
-.nav-elements ul li {
-  margin: 10px 0;
+
+
+.nav-elements .nextui-link {
+  margin: 0 15px; /* Espaciado entre elementos */
+  text-decoration: none;
+  color: #ffffff; /* Color de texto */
+  font-weight: 500; /* Peso del texto */
+  padding: 8px 16px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.nav-elements .nextui-link:hover {
+  background-color: #4c4654; /* Color de fondo al pasar el ratón */
 }
 
 @media (max-width: 768px) {
@@ -77,64 +56,29 @@ body {
     display: block;
   }
 
+  /* Menu hamburguesa*/
   .nav-elements {
+    display: none;
     position: absolute;
-    right: 0;
     top: 60px;
-    background-color: #fef7e5;
-    width: 0px;
-    height: calc(100vh - 60px);
-    transition: all 0.3s ease-in;
-    overflow: hidden;
+    right: 0;
+    width: 40%;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #eaeaea;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .nav-elements.active {
-    width: 270px;
-  }
-
-  .nav-elements ul {
     display: flex;
-    flex-direction: column;
-    padding: 10px;
   }
 
-  .nav-elements ul li {
-    margin-right: unset;
-    margin-top: 22px;
-  }
-}
-
-@media (min-width: 769px) {
-  .nav-elements ul {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .nav-elements ul li {
-    margin: 0 10px;
+  .nav-elements .nextui-link {
+    margin: 15px 0; /* Espaciado entre elementos en móvil */
+    width: 100%; /* Ancho completo en móvil */
+    text-align: center; /* Centrar texto en móvil */
   }
 }
 
-.nav-link {
-  font-size: 16px;
-  font-weight: 400;
-  color: black; /* Cambiar el color a negro */
-  text-decoration: none;
-  padding: 10px;
-}
 
-.nav-link.active {
-  color: #574c4c; /* Color activo */
-  font-weight: 500;
-  position: relative;
-}
-
-.nav-link.active::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #574c4c;
-}

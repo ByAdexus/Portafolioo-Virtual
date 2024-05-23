@@ -20,18 +20,18 @@ const Navbarr = () => {
           <Link className="nextui-link" as={NavLink} to="/" exact>
             Inicio
           </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link className="nextui-link" as={NavLink} to="/projects">
-            Proyectos
-          </Link>
-        </NavbarItem>
+          </NavbarItem>
         <NavbarItem>
           <Link className="nextui-link" as={NavLink} to="/about">
             Acerca de mí
           </Link>
         </NavbarItem>
         <NavbarItem>
+        </NavbarItem>
+        <NavbarItem>
+          <Link className="nextui-link" as={NavLink} to="/projects">
+            Proyectos
+          </Link>
           <Link className="nextui-link" as={NavLink} to="/contact">
             Contacto
           </Link>

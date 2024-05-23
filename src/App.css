@@ -288,3 +288,41 @@ body {
   /* padding-bottom: 60px; Espacio inferior */ 
 }
 
+/* Nueva sección "Proyectos" */
+.projects-section {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #1a1a1a; /* Color de fondo negro similar a "Acerca de mí" */
+  color: #ffffff; /* Color del texto blanco */
+}
+
+.projects h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.tab-strip {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 1.2em;
+  background-color: #333; /* Fondo oscuro para las pestañas */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff; /* Color del texto blanco */
+}
+
+.tab.active {
+  background-color: #03a9f4;
+  color: white;
+}
+
+.project-list {
+  margin-top: 20px;
+}

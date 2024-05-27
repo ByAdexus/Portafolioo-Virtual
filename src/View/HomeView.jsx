@@ -114,16 +114,13 @@ const HomeView = () => {
             <button className={`tab ${activeTab === "mobile" ? "active" : ""}`} onClick={() => handleTabChange("mobile")}>Proyectos móviles</button>
           </div>
           <div className="project-list">
-            {filteredProjects.map(project => (
-              <div key={project.id} className="project-card" onClick={() => handleProjectClick(project)}>
-                <img src={`https://github.com/ByAdexus/Portafolioo-Virtual/${project.name}.jpg`} alt={project.name} />
-                <div>
-                  <h3>{project.name}</h3>
-                  <p>{project.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+  {filteredProjects.map((project, index) => (
+    <div key={project.id} className={`project-card ${index === 0 ? 'first-project' : ''}`} onClick={() => handleProjectClick(project)}>
+      {/* Utiliza la referencia a la imagen importada */}
+      {index === 0 && <img src="https://i.ibb.co/8B5ZtC2/888.jpg" alt={project.name} />}
+    </div>
+  ))}
+</div>
         </div>
       </div>
 

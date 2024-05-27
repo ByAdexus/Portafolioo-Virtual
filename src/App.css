@@ -384,28 +384,35 @@ body {
 
 /* Estilos para las tarjetas de proyecto */
 .project-list {
-  display: grid; /* Usamos una cuadrícula */
-  grid-template-columns: repeat(3, 1fr); /* Dividimos en 3 columnas */
-  gap: 20px; /* Añadimos espacio entre los elementos */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .project-card {
-  background-color: #444; /* Cambiamos el color de fondo */
+  background-color: #444;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Cambiamos la sombra */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden; /* Recorta el contenido que exceda el tamaño de la tarjeta */
+  max-height: 200px; /* Limita la altura máxima de la tarjeta */
 }
 
 .project-card:hover {
-  transform: translateY(-5px); /* Levantamos ligeramente al pasar el ratón */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Cambiamos la sombra al pasar el ratón */
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .project-card h3,
 .project-card p {
-  color: #fff; /* Cambiamos el color del texto */
+  color: #fff;
+}
+
+.first-project img {
+  width: 100%; /* Ajusta el tamaño de la imagen para que ocupe toda la tarjeta */
+  height: auto;
 }
 
 /* Cambios de estilo para el modal */

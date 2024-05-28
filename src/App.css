@@ -390,14 +390,15 @@ body {
 }
 
 .project-card {
-  background-color: #444;
+  background-color: #1a1a1a;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   overflow: hidden; /* Recorta el contenido que exceda el tamaño de la tarjeta */
-  max-height: 200px; /* Limita la altura máxima de la tarjeta */
+  height: 87%;
+  width: 100%;
 }
 
 .project-card:hover {
@@ -411,7 +412,7 @@ body {
 }
 
 .first-project img {
-  width: 100%; /* Ajusta el tamaño de la imagen para que ocupe toda la tarjeta */
+  width: 90%; /* Ajusta el tamaño de la imagen para que ocupe toda la tarjeta */
   height: auto;
 }
 
@@ -430,41 +431,54 @@ body {
   pointer-events: none;
   transition: opacity 0.5s ease; /* Transición de opacidad */
 }
-  .show {
-    opacity: 1;
-    pointer-events: auto;
-  }
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
 
-  .modal-wrap {
-    max-width: 80%; /* Ampliamos el ancho del modal */
-    background-color: #333; /* Cambiamos el color de fondo del modal */
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Cambiamos la sombra */
-    opacity: 0;
-    transform: translateY(-100px); /* Movemos el modal hacia arriba */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Transición de opacidad y transformación */
-  }
+.modal-wrap {
+  max-width: 80%; /* Ampliamos el ancho del modal */
+  background-color: #333; /* Cambiamos el color de fondo del modal */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Cambiamos la sombra */
+  opacity: 0;
+  transform: translateY(-100px); /* Movemos el modal hacia arriba */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Transición de opacidad y transformación */
+}
+.modal.show .modal-wrap {
+  opacity: 1;
+  transform: translateY(0); /* Devolvemos el modal a su posición original */
+}
 
-  .show .modal-wrap {
-    opacity: 1;
-    transform: translateY(0); /* Devolvemos el modal a su posición original */
-  }
-  
-  .modal-wrap img {
-    width: 50%; /* Reducimos el tamaño de la imagen */
-    height: auto;
-    float: left; /* Movemos la imagen a la izquierda */
-  }
-  
-  .modal-wrap p {
-    padding: 20px 30px;
-    color: #fff; 
-  }
+.modal-wrap img {
+  width: 50%; /* Reducimos el tamaño de la imagen */
+  height: auto;
+  float: left; /* Movemos la imagen a la izquierda */
+}
+
+.modal-info {
+  color: #fff; /* Cambiar el color del texto a blanco */
+  text-align: center; /* Centrar el contenido del modal */
+  padding: 20px 30px;
+}
+
+.technologies {
+  margin-top: 20px;
+}
+
+.technologies ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.technologies ul li {
+  margin-bottom: 10px;
+}
 
 .modal-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   padding: 20px;
 }
 
@@ -483,13 +497,13 @@ body {
   justify-content: center;
   border: none;
   cursor: pointer;
-  background-color: #102770; /* Cambiar el color de fondo del botón */
-  color: #ffeba7; /* Cambiar el color del texto del botón */
+  background-color: #1a1a1a; /* Cambiar el color de fondo del botón */
+  color: #ffffff; /* Cambiar el color del texto del botón */
   box-shadow: 0 12px 35px 0 rgba(16, 39, 112, 0.25); /* Cambiar la sombra del botón */
 }
 
 .modal-buttons button:hover {
-  background-color: #ffeba7; /* Cambiar el color de fondo del botón al pasar el cursor */
+  background-color: #03a9f4; /* Cambiar el color de fondo del botón al pasar el cursor */
   color: #102770; /* Cambiar el color del texto del botón al pasar el cursor */
 }
 

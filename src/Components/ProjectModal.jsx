@@ -1,23 +1,35 @@
+import React from 'react';
 import '../App.css';
 
 const ProjectModal = ({ showModal, selectedProject, handleCloseModal }) => {
   return (
     <div className={`modal ${showModal ? 'show' : ''}`}>
       {showModal && selectedProject && (
-       <div className="modal-wrap">
-       <img src="https://assets.codepen.io/1462889/sl3.jpg" alt="Project" />
-       <div className="modal-info">
-         <p>{selectedProject.description}</p>
-         <div className="modal-buttons">
-           <button onClick={() => window.open(selectedProject.html_url, "_blank")}>
-             GitHub
-           </button>
-           <button onClick={handleCloseModal}>
-             Cerrar
-           </button>
-         </div>
-       </div>
-     </div>
+        <div className="modal-wrap">
+          <div className="modal-content">
+            <img src={selectedProject.image} alt={selectedProject.name} />
+            <div className="modal-info">
+              <h3>{selectedProject.name}</h3>
+              <p>{selectedProject.description}</p>
+              <div className="technologies">
+                <h4>Tecnologías y Herramientas</h4>
+                <ul>
+                  {selectedProject.technologies.map((tech, index) => (
+                    <li key={index}>{tech}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="modal-buttons">
+                <button onClick={() => window.open(selectedProject.html_url, "_blank")}>
+                  GitHub
+                </button>
+                <button onClick={handleCloseModal}>
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

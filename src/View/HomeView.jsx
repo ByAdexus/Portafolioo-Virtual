@@ -8,7 +8,7 @@ const HomeView = () => {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const projectsToShow = ["Portafolioo-Virtual", "proyecto2"]; // Lista de repositorios que deseas mostrar
+  const projectsToShow = ["Portafolioo-Virtual", "Class-Top"]; // Lista de repositorios que deseas mostrar
 
   useEffect(() => {
     // Fetch projects from GitHub API
@@ -28,10 +28,18 @@ const HomeView = () => {
   };
 
   const handleProjectClick = (project) => {
-    console.log("Proyecto seleccionado:", project);
-    setSelectedProject(project);
+    // Aquí, asegúrate de incluir la URL de la imagen del proyecto seleccionado
+    const selectedProjectInfo = {
+      ...project,
+      image: "https://i.ibb.co/8B5ZtC2/888.jpg",
+      description: "AWDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD",
+      technologies: ["React", "Node.js", "HTML", "CSS"], 
+    };
+  
+    setSelectedProject(selectedProjectInfo);
     setShowModal(true);
   };
+  
 
   const handleCloseModal = () => {
     console.log("Modal cerrado");

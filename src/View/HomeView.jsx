@@ -1,61 +1,65 @@
 import React, { useState, useEffect } from 'react';
-import ProjectModal from '../Components/ProjectModal'; // Importa el nuevo componente ProjectModal
-import '../App.css'; // Asegúrate de importar tu archivo CSS
-
+import axios from 'axios';
+import ProjectModal from '../Components/ProjectModal';
+import '../App.css';
 
 const HomeView = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const projectsToShow = ["Portafolioo-Virtual", "Class-Top"]; // Lista de repositorios que deseas mostrar
+  const projectsToShow = ["Portafolioo-Virtual", "Class-Top"];
 
   useEffect(() => {
-    // Fetch projects from GitHub API
-    fetch('https://api.github.com/users/ByAdexus/repos')
-      .then(response => response.json())
-      .then(data => {
-        // Filtrar los proyectos para mostrar solo los repositorios deseados
+    const fetchGitHubProjects = async () => {
+      try {
+        const response = await fetch('https://api.github.com/users/ByAdexus/repos');
+        const data = await response.json();
         const filteredProjects = data.filter(project => projectsToShow.includes(project.name));
         setProjects(filteredProjects);
-      })
-      .catch(error => console.error('Error fetching GitHub projects:', error));
+      } catch (error) {
+        console.error('Error fetching GitHub projects:', error);
+      }
+    };
+
+    const fetchNestProjects = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/projects-details'); // Cambia la URL si es necesario
+        const nestProjects = response.data;
+        setProjects(prevProjects => [...prevProjects, ...nestProjects]);
+      } catch (error) {
+        console.error('Error fetching NestJS projects:', error);
+      }
+    };
+
+    fetchGitHubProjects();
+    fetchNestProjects();
   }, []);
 
-  // Función para cambiar la pestaña activa
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
   const handleProjectClick = (project) => {
-    // Aquí, asegúrate de incluir la URL de la imagen del proyecto seleccionado
     const selectedProjectInfo = {
       ...project,
-      image: "https://i.ibb.co/8B5ZtC2/888.jpg",
-      description: "AWDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD",
-      technologies: ["React", "Node.js", "HTML", "CSS"], 
+      image: "https://i.ibb.co/8B5ZtC2/888.jpg", // Default image if not provided
+      description: project.description || "No description available.",
+      technologies: project.technologies || ["No technologies listed"],
     };
-  
     setSelectedProject(selectedProjectInfo);
     setShowModal(true);
   };
-  
 
   const handleCloseModal = () => {
-    console.log("Modal cerrado");
     setShowModal(false);
     setSelectedProject(null);
   };
 
-  useEffect(() => {
-    console.log("Modal abierto:", showModal);
-    console.log("Proyecto seleccionado:", selectedProject);
-  }, [showModal, selectedProject]);
-
   const filteredProjects = projects.filter(project => {
     if (activeTab === 'all') return true;
-    if (activeTab === 'web') return project.language === 'JavaScript';
-    if (activeTab === 'mobile') return project.language === 'Java';
+    if (activeTab === 'web') return project.language === 'JavaScript' || project.technologies?.includes('JavaScript');
+    if (activeTab === 'mobile') return project.language === 'Java' || project.technologies?.includes('Java');
     return true;
   });
 
@@ -122,13 +126,12 @@ const HomeView = () => {
             <button className={`tab ${activeTab === "mobile" ? "active" : ""}`} onClick={() => handleTabChange("mobile")}>Proyectos móviles</button>
           </div>
           <div className="project-list">
-  {filteredProjects.map((project, index) => (
-    <div key={project.id} className={`project-card ${index === 0 ? 'first-project' : ''}`} onClick={() => handleProjectClick(project)}>
-      {/* Utiliza la referencia a la imagen importada */}
-      {index === 0 && <img src="https://i.ibb.co/8B5ZtC2/888.jpg" alt={project.name} />}
-    </div>
-  ))}
-</div>
+            {filteredProjects.map((project, index) => (
+              <div key={project.id} className={`project-card ${index === 0 ? 'first-project' : ''}`} onClick={() => handleProjectClick(project)}>
+                <img src={project.image || "https://i.ibb.co/8B5ZtC2/888.jpg"} alt={project.name} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

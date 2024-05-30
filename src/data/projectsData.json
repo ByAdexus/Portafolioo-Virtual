@@ -1,0 +1,17 @@
+[
+    {
+      "name": "Portafolioo-Virtual",
+      "image": "https://i.ibb.co/8B5ZtC2/888.jpg",
+      "description": "Este es un portafolio virtual para mostrar mis proyectos.",
+      "technologies": ["React", "CSS", "JavaScript"],
+      "html_url": "https://github.com/ByAdexus/Portafolioo-Virtual"
+    },
+    {
+      "name": "Class-Top",
+      "image": "https://i.ibb.co/8B5ZtC2/888.jpg",
+      "description": "Una aplicación para la gestión de clases y tareas.",
+      "technologies": ["Angular", "Node.js", "Express"],
+      "html_url": "https://github.com/ByAdexus/Class-Top"
+    }
+  ]
+  

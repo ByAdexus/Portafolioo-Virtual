@@ -43,7 +43,7 @@ const HomeView = () => {
   const handleProjectClick = (project) => {
     const selectedProjectInfo = {
       ...project,
-      image: "https://i.ibb.co/8B5ZtC2/888.jpg", // Default image if not provided
+      image: project.image || "https://i.ibb.co/8B5ZtC2/888.jpg", // Default image if not provided
       description: project.description || "No description available.",
       technologies: project.technologies || ["No technologies listed"],
     };

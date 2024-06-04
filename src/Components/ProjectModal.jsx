@@ -20,9 +20,11 @@ const ProjectModal = ({ showModal, selectedProject, handleCloseModal }) => {
                 </ul>
               </div>
               <div className="modal-buttons">
-                <button onClick={() => window.open(selectedProject.html_url, "_blank")}>
-                  GitHub
-                </button>
+                {selectedProject.html_url && (
+                  <button onClick={() => window.open(selectedProject.html_url, "_blank")}>
+                    GitHub
+                  </button>
+                )}
                 <button onClick={handleCloseModal}>
                   Cerrar
                 </button>

@@ -11,45 +11,51 @@ const HomeView = () => {
   const projectsToShow = ["Portafolioo-Virtual", "Class-Top"];
 
   useEffect(() => {
-    const fetchGitHubProjects = async () => {
+    const fetchProjects = async () => {
       try {
-        const response = await fetch('https://api.github.com/users/ByAdexus/repos');
-        const data = await response.json();
-        const filteredProjects = data.filter(project => projectsToShow.includes(project.name));
-        setProjects(filteredProjects);
+        // Fetch GitHub projects
+        console.log('Fetching GitHub projects...');
+        const githubResponse = await fetch('https://api.github.com/users/ByAdexus/repos');
+        const githubData = await githubResponse.json();
+        console.log('GitHub projects:', githubData);
+        const filteredGithubProjects = githubData.filter(project => projectsToShow.includes(project.name));
+  
+        // Fetch NestJS projects
+        console.log('Fetching NestJS projects...');
+        const nestResponse = await axios.get('http://localhost:3000/projects-details');
+        const nestProjects = nestResponse.data;
+        console.log('NestJS projects:', nestProjects);
+  
+        // Combine both project arrays
+        const combinedProjects = [...filteredGithubProjects, ...nestProjects];
+        console.log('Combined projects:', combinedProjects);
+        setProjects(combinedProjects);
       } catch (error) {
-        console.error('Error fetching GitHub projects:', error);
+        console.error('Error fetching projects:', error);
       }
     };
-
-    const fetchNestProjects = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/projects-details'); // Cambia la URL si es necesario
-        const nestProjects = response.data;
-        setProjects(prevProjects => [...prevProjects, ...nestProjects]);
-      } catch (error) {
-        console.error('Error fetching NestJS projects:', error);
-      }
-    };
-
-    fetchGitHubProjects();
-    fetchNestProjects();
+  
+    fetchProjects();
   }, []);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
-  const handleProjectClick = (project) => {
-    const selectedProjectInfo = {
-      ...project,
-      image: project.image || "https://i.ibb.co/8B5ZtC2/888.jpg", // Default image if not provided
-      description: project.description || "No description available.",
-      technologies: project.technologies || ["No technologies listed"],
+  const handleProjectClick = async (project) => {
+      try {
+        // Hacer una solicitud a tu API de NestJS para obtener los detalles del proyecto desde tu base de datos
+        const response = await axios.get(`http://localhost:3000/projects-details/${project._id}`);
+        const projectDetails = response.data;
+    
+        // Actualizar el estado del proyecto seleccionado con los detalles obtenidos de tu API
+        setSelectedProject(projectDetails);
+        setShowModal(true);
+      } catch (error) {
+        console.error('Error fetching project details:', error);
+      }
     };
-    setSelectedProject(selectedProjectInfo);
-    setShowModal(true);
-  };
+    
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -126,12 +132,12 @@ const HomeView = () => {
             <button className={`tab ${activeTab === "mobile" ? "active" : ""}`} onClick={() => handleTabChange("mobile")}>Proyectos móviles</button>
           </div>
           <div className="project-list">
-            {filteredProjects.map((project, index) => (
-              <div key={project.id} className={`project-card ${index === 0 ? 'first-project' : ''}`} onClick={() => handleProjectClick(project)}>
-                <img src={project.image || "https://i.ibb.co/8B5ZtC2/888.jpg"} alt={project.name} />
-              </div>
-            ))}
-          </div>
+  {filteredProjects.map((project, index) => (
+    <div key={project.id || index} className={`project-card ${index === 0 ? 'first-project' : ''}`} onClick={() => handleProjectClick(project)}>
+      <img src={project.image || "https://i.ibb.co/8B5ZtC2/888.jpg"} alt={project.name} />
+    </div>
+  ))}
+</div>
         </div>
       </div>
 

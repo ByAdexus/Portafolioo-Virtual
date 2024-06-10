@@ -1,65 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import ProjectModal from '../Components/ProjectModal';
 import '../App.css';
 
 const HomeView = () => {
-  const [activeTab, setActiveTab] = useState("all");
   const [projects, setProjects] = useState([]);
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const projectsToShow = ["Portafolioo-Virtual", "Class-Top"];
+  const [activeTab, setActiveTab] = useState('all');
+  const [specificProjects, setSpecificProjects] = useState([]);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        // Fetch GitHub projects
-        console.log('Fetching GitHub projects...');
         const githubResponse = await fetch('https://api.github.com/users/ByAdexus/repos');
         const githubData = await githubResponse.json();
-        console.log('GitHub projects:', githubData);
-        const filteredGithubProjects = githubData.filter(project => projectsToShow.includes(project.name));
-  
-        // Fetch NestJS projects
-        console.log('Fetching NestJS projects...');
-        const nestResponse = await axios.get('http://localhost:3000/projects-details');
-        const nestProjects = nestResponse.data;
-        console.log('NestJS projects:', nestProjects);
-  
-        // Combine both project arrays
-        const combinedProjects = [...filteredGithubProjects, ...nestProjects];
-        console.log('Combined projects:', combinedProjects);
-        setProjects(combinedProjects);
+        const filteredProjects = githubData.filter(repo => repo.name !== 'Api-Portafolio');
+        const fetchedProjects = filteredProjects.map(repo => ({
+          name: repo.name,
+          description: repo.description,
+          githubLink: repo.html_url,
+          language: repo.language,
+          technologies: repo.technologies,
+          image: getImageForProject(repo.name)
+        }));
+        setProjects(fetchedProjects);
+        const specificProjects = fetchedProjects.filter(project => project.name === 'Portafolioo-Virtual' || project.name === 'Class-Top').slice(0, 2);
+        setSpecificProjects(specificProjects);
       } catch (error) {
-        console.error('Error fetching projects:', error);
+        console.error('Error fetching projects from GitHub:', error);
       }
     };
-  
+
     fetchProjects();
   }, []);
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
+  const getImageForProject = (projectName) => {
+    if (projectName === 'Portafolioo-Virtual') {
+      return 'https://i.ibb.co/8B5ZtC2/888.jpg';
+    } else if (projectName === 'Class-Top') {
+      return 'URL_DE_LA_IMAGEN_DE_CLASS-TOP';
+    } else {
+      return 'URL_POR_DEFECTO';
+    }
   };
 
-  const handleProjectClick = async (project) => {
-      try {
-        // Hacer una solicitud a tu API de NestJS para obtener los detalles del proyecto desde tu base de datos
-        const response = await axios.get(`http://localhost:3000/projects-details/${project._id}`);
-        const projectDetails = response.data;
-    
-        // Actualizar el estado del proyecto seleccionado con los detalles obtenidos de tu API
-        setSelectedProject(projectDetails);
-        setShowModal(true);
-      } catch (error) {
-        console.error('Error fetching project details:', error);
-      }
-    };
-    
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setSelectedProject(null);
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
   };
 
   const filteredProjects = projects.filter(project => {
@@ -67,7 +50,7 @@ const HomeView = () => {
     if (activeTab === 'web') return project.language === 'JavaScript' || project.technologies?.includes('JavaScript');
     if (activeTab === 'mobile') return project.language === 'Java' || project.technologies?.includes('Java');
     return true;
-  });
+  }).slice(0, 2);
 
   return (
     <div>
@@ -123,27 +106,82 @@ const HomeView = () => {
       </div>
 
       <div className="projects-section">
-        <div className="projects">
-          <h2><i className="fas fa-project-diagram"></i> Proyectos</h2>
-          <div className="hr-line hr-line-projects"></div>
-          <div className="tab-strip">
-            <button className={`tab ${activeTab === "all" ? "active" : ""}`} onClick={() => handleTabChange("all")}>Todos los proyectos</button>
-            <button className={`tab ${activeTab === "web" ? "active" : ""}`} onClick={() => handleTabChange("web")}>Proyectos web</button>
-            <button className={`tab ${activeTab === "mobile" ? "active" : ""}`} onClick={() => handleTabChange("mobile")}>Proyectos móviles</button>
-          </div>
-          <div className="project-list">
-  {filteredProjects.map((project, index) => (
-    <div key={project.id || index} className={`project-card ${index === 0 ? 'first-project' : ''}`} onClick={() => handleProjectClick(project)}>
-      <img src={project.image || "https://i.ibb.co/8B5ZtC2/888.jpg"} alt={project.name} />
+  <div className="projects">
+    <h2><i className="fas fa-project-diagram"></i> Proyectos</h2>
+    <div className="hr-line hr-line-projects"></div>
+    <div className="tab-strip">
+      <button className={`tab ${activeTab === "all" ? "active" : ""}`} onClick={() => handleTabChange("all")}>Todos los proyectos</button>
+      <button className={`tab ${activeTab === "web" ? "active" : ""}`} onClick={() => handleTabChange("web")}>Proyectos web</button>
+      <button className={`tab ${activeTab === "mobile" ? "active" : ""}`} onClick={() => handleTabChange("mobile")}>Proyectos móviles</button>
     </div>
-  ))}
-</div>
+    <div className="project-list">
+      {filteredProjects.map((project, index) => (
+        <div key={index} className={`project-card ${index === 0 ? 'first-project' : ''}`}>
+          <h3><a href={project.githubLink} target="_blank" rel="noopener noreferrer">{project.name}</a></h3>
+          <p>{project.description}</p>
+          <img src={project.image} alt={project.name} />
         </div>
-      </div>
-
-      <ProjectModal showModal={showModal} handleCloseModal={handleCloseModal} selectedProject={selectedProject} />
+      ))}
     </div>
-  );
+  </div>
+</div>
+
+{/* Sección "Contáctame" */}
+<section className="contact" id="contact">
+            <div className="container">
+                <div className="heading text-center">
+                    <h2>Contact
+                        <span> Me </span></h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        <br />incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div className="row">
+                    <div className="col-md-5">
+                        <div className="title">
+                            <h3>Contact detail</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+                        </div>
+                        <div className="content">
+                            <div className="info">
+                                <i className="fas fa-mobile-alt"></i>
+                                <h4 className="d-inline-block">PHONE :<br /><span>+12457836913 , +12457836913</span></h4>
+                            </div>
+                            <div className="info">
+                                <i className="far fa-envelope"></i>
+                                <h4 className="d-inline-block">EMAIL :<br /><span>example@info.com</span></h4>
+                            </div>
+                            <div className="info">
+                                <i className="fas fa-map-marker-alt"></i>
+                                <h4 className="d-inline-block">ADDRESS :<br /><span>6743 last street , Abcd, Xyz</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-7">
+                        <form>
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <input type="text" className="form-control" placeholder="Name" />
+                                </div>
+                                <div className="col-sm-6">
+                                    <input type="email" className="form-control" placeholder="Email" />
+                                </div>
+                                <div className="col-sm-12">
+                                    <input type="text" className="form-control" placeholder="Subject" />
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <textarea className="form-control" rows="5" id="comment" placeholder="Message"></textarea>
+                            </div>
+                            <button className="btn btn-block" type="submit">Send Now!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+    );
 };
+
+
 
 export default HomeView;

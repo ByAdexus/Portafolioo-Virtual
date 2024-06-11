@@ -382,6 +382,7 @@ body {
   background-image: url('../src/assets/img/lenguaje-de-codificacion.jpg'); /* Ruta de la imagen */
 }
 
+
 /* Estilos para las tarjetas de proyecto */
 .project-list {
   display: grid;
@@ -397,10 +398,11 @@ body {
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   overflow: hidden;
-  height: 100%; /* Ajusta la altura de la tarjeta */
+  height: auto; /* Ajusta la altura automáticamente según el contenido */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Asegura que el contenido se distribuya uniformemente */
+  align-items: center;
+  text-align: center;
 }
 
 .project-card:hover {
@@ -409,10 +411,9 @@ body {
 }
 
 .project-card img {
-  width: 100%;
+  width: 90%; /* Ajusta el tamaño de la imagen */
   height: auto;
-  border-radius: 10px;
-  margin-bottom: 10px; /* Espacio entre la imagen y el contenido de la tarjeta */
+  margin-bottom: 20px;
 }
 
 .project-card h3,
@@ -420,9 +421,24 @@ body {
   color: #fff;
 }
 
-.first-project img {
-  width: 100%;
-  height: auto;
+.project-card .project-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.project-card .technologies {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.technologies span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 /* Cambios de estilo para el modal */
@@ -517,3 +533,74 @@ body {
 }
 
 
+/*Contacto*/
+
+.contact-section {
+  background-color: #1a1a1a;
+  padding: 40px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin-top: 40px;
+}
+
+.contact {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.contact h2 {
+  text-align: center;
+}
+
+.hr-line-contact {
+  width: 50px;
+  height: 4px;
+  background-color: #f39c12;
+  margin: 10px auto 20px auto;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px 2px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+.btn i {
+  margin-right: 5px;
+}

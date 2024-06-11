@@ -109,6 +109,28 @@ const HomeView = () => {
           </div>
         </div>
       </div>
+    {/* Sección "Contáctame"  https://classtop-15d2c.web.app/ */}
+    <div className="contact-section">
+        <div className="contact">
+        <h2><i className="fas fa-project-diagram"></i> Contacto</h2>
+          <div className="hr-line hr-line-contact"></div>
+          <form className="contact-form">
+            <div className="form-group">
+              <label htmlFor="name">Nombre:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Correo electrónico:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="message">Mensaje:</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" className="btn">Enviar</button> 
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

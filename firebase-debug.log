@@ -1,0 +1,48 @@
+[debug] [2024-06-11T07:16:58.169Z] ----------------------------------------------------------------------
+[debug] [2024-06-11T07:16:58.172Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\sergi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2024-06-11T07:16:58.172Z] CLI Version:   13.11.2
+[debug] [2024-06-11T07:16:58.173Z] Platform:      win32
+[debug] [2024-06-11T07:16:58.173Z] Node Version:  v20.14.0
+[debug] [2024-06-11T07:16:58.173Z] Time:          Tue Jun 11 2024 00:16:58 GMT-0700 (hora estándar del Pacífico de México)
+[debug] [2024-06-11T07:16:58.173Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-06-11T07:16:58.319Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-06-11T07:16:58.319Z] > authorizing via signed-in user (sergiotejedarex@gmail.com)
+[info] i  emulators: Starting emulators: hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: hosting"}}
+[debug] [2024-06-11T07:16:58.335Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-06-11T07:16:58.335Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-06-11T07:16:58.335Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-06-11T07:16:58.342Z] [hub] writing locator at C:\Users\sergi\AppData\Local\Temp\hub-detalles-proyectos.json
+[debug] [2024-06-11T07:16:58.371Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/detalles-proyectos/sites 
+[debug] [2024-06-11T07:16:59.265Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/detalles-proyectos/sites 200
+[debug] [2024-06-11T07:16:59.265Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/detalles-proyectos/sites {"sites":[{"name":"projects/detalles-proyectos/sites/detalles-proyectos","defaultUrl":"https://detalles-proyectos.web.app","appId":"1:235262014351:web:1cdf050b3c71512e0cd1fa","type":"DEFAULT_SITE"}]}
+[debug] [2024-06-11T07:16:59.266Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/detalles-proyectos/webApps/1:235262014351:web:1cdf050b3c71512e0cd1fa/config [none]
+[debug] [2024-06-11T07:16:59.822Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/detalles-proyectos/webApps/1:235262014351:web:1cdf050b3c71512e0cd1fa/config 200
+[debug] [2024-06-11T07:16:59.822Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/detalles-proyectos/webApps/1:235262014351:web:1cdf050b3c71512e0cd1fa/config {"projectId":"detalles-proyectos","appId":"1:235262014351:web:1cdf050b3c71512e0cd1fa","databaseURL":"https://detalles-proyectos-default-rtdb.firebaseio.com","storageBucket":"detalles-proyectos.appspot.com","apiKey":"AIzaSyD6JC1Rp9sD09COT1KzKFa0TttL1FJvUX4","authDomain":"detalles-proyectos.firebaseapp.com","messagingSenderId":"235262014351","measurementId":"G-078EDM2BBR"}
+[debug] [2024-06-11T07:16:59.833Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/detalles-proyectos [none]
+[debug] [2024-06-11T07:17:00.068Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/detalles-proyectos 200
+[debug] [2024-06-11T07:17:00.068Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/detalles-proyectos {"projectId":"detalles-proyectos","projectNumber":"235262014351","displayName":"Detalles-proyectos","name":"projects/detalles-proyectos","resources":{"hostingSite":"detalles-proyectos","realtimeDatabaseInstance":"detalles-proyectos-default-rtdb"},"state":"ACTIVE","etag":"1_3228a517-b585-4b25-9402-0e7237262711"}
+[info] i  hosting[detalles-proyectos]: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] +  hosting[detalles-proyectos]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[warn] !  emulators: The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project. {"metadata":{"emulator":{"name":"hub"},"message":"The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┐
+│ Emulator │ Host:Port      │
+├──────────┼────────────────┤
+│ Hosting  │ 127.0.0.1:5000 │
+└──────────┴────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[info] i  hosting: 127.0.0.1 - - [11/Jun/2024:07:17:11 +0000] "GET / HTTP/1.1" 200 644 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [11/Jun/2024:07:17:11 +0000] \"GET / HTTP/1.1\" 200 644 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [11/Jun/2024:07:17:11 +0000] "GET /static/css/main.a9a93047.css HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [11/Jun/2024:07:17:11 +0000] \"GET /static/css/main.a9a93047.css HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [11/Jun/2024:07:17:11 +0000] "GET /static/js/main.e6e9b587.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [11/Jun/2024:07:17:11 +0000] \"GET /static/js/main.e6e9b587.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [11/Jun/2024:07:17:11 +0000] "GET /static/media/avatar-de-usuario.b644ab3a07f70f263b00.jpg HTTP/1.1" 200 16814 "http://127.0.0.1:5000/static/css/main.a9a93047.css" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [11/Jun/2024:07:17:11 +0000] \"GET /static/media/avatar-de-usuario.b644ab3a07f70f263b00.jpg HTTP/1.1\" 200 16814 \"http://127.0.0.1:5000/static/css/main.a9a93047.css\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [11/Jun/2024:07:17:11 +0000] "GET /static/media/lenguaje-de-codificacion.d74f3a92a503a591dc9c.jpg HTTP/1.1" 200 16826 "http://127.0.0.1:5000/static/css/main.a9a93047.css" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [11/Jun/2024:07:17:11 +0000] \"GET /static/media/lenguaje-de-codificacion.d74f3a92a503a591dc9c.jpg HTTP/1.1\" 200 16826 \"http://127.0.0.1:5000/static/css/main.a9a93047.css\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [11/Jun/2024:07:17:11 +0000] "GET /static/media/hacker-man-laptop.eceb721d3ce6daec39af.jpg HTTP/1.1" 200 7614845 "http://127.0.0.1:5000/static/css/main.a9a93047.css" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [11/Jun/2024:07:17:11 +0000] \"GET /static/media/hacker-man-laptop.eceb721d3ce6daec39af.jpg HTTP/1.1\" 200 7614845 \"http://127.0.0.1:5000/static/css/main.a9a93047.css\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\""}}

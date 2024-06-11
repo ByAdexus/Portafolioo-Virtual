@@ -46,16 +46,16 @@ const HomeView = () => {
                 <h2>Sergio Tejeda<br /><span>Ingeniero en desarrollo y gestión de software</span></h2>
                 <ul className="sci">
                   <li>
-                    <a href="#"><i className="fab fa-facebook-f"></i></a>
+                    <a href="/"><i className="fab fa-facebook-f"></i></a>
                   </li>
                   <li>
-                    <a href="#"><i className="fab fa-twitter"></i></a>
+                    <a href="/"><i className="fab fa-twitter"></i></a>
                   </li>
                   <li>
-                    <a href="#"><i className="fab fa-linkedin-in"></i></a>
+                    <a href="/"><i className="fab fa-linkedin-in"></i></a>
                   </li>
                   <li>
-                    <a href="#"><i className="fab fa-instagram"></i></a>
+                    <a href="/"><i className="fab fa-instagram"></i></a>
                   </li>
                 </ul>
               </div>

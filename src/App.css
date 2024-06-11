@@ -382,6 +382,11 @@ body {
   background-image: url('../src/assets/img/lenguaje-de-codificacion.jpg'); /* Ruta de la imagen */
 }
 
+/* Imagen específica para "Contacto" */
+.hr-line-contact:after {
+  background-image: url('../src/assets/img/correo-electronico.jpg'); /* Ruta de la imagen */
+}
+
 
 /* Estilos para las tarjetas de proyecto */
 .project-list {
@@ -533,8 +538,7 @@ body {
 }
 
 
-/*Contacto*/
-
+/* Contacto */
 .contact-section {
   background-color: #1a1a1a;
   padding: 40px 20px;
@@ -560,47 +564,90 @@ body {
   margin: 10px auto 20px auto;
 }
 
-.contact-form {
+.contact-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
-.form-group {
-  margin-bottom: 15px;
+.contact-left,
+.contact-right {
+  width: 48%;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
+.contact-left .details {
+  margin-bottom: 20px;
 }
 
-.form-group input,
-.form-group textarea {
+.contact-left .details i {
+  font-size: 30px;
+  color: #f39c12;
+  margin-bottom: 10px;
+}
+
+.contact-left .details .topic {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.contact-left .details .text-one,
+.contact-left .details .text-two {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.contact-right .topic-text {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.contact-right p {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.contact-right .input-box {
+  margin-bottom: 20px;
+}
+
+.contact-right .input-box input,
+.contact-right .input-box textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.btn {
-  background-color: #333;
-  color: #fff;
+  background-color: #2c2c2c;
   border: none;
-  padding: 10px 15px;
+  color: #fff;
   border-radius: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px 2px;
+}
+
+.contact-right .input-box textarea {
+  height: 100px;
+  resize: none;
+}
+
+.contact-right .button {
+  text-align: right;
+}
+
+.contact-right .button input {
+  background-color: #f39c12;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s;
+  border-radius: 5px;
 }
 
-.btn:hover {
-  background-color: #555;
+.contact-right .button input:hover {
+  background-color: #e67e22;
 }
 
-.btn i {
-  margin-right: 5px;
+@media (max-width: 768px) {
+  .contact-left,
+  .contact-right {
+    width: 100%;
+  }
 }

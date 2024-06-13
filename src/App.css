@@ -23,6 +23,11 @@ body {
   padding: 0 20px;
   clip-path: polygon(0 0, 100% 0, 100% 80%, 95% 100%, 5% 100%, 0 80%);
   z-index: 1000;
+  transition: top 0.3s ease; /* Transición para suavizar el movimiento */
+}
+
+.custom-navbar.hide-navbar {
+  top: -60px; /* Oculta la navbar al moverla fuera de la pantalla */
 }
 
 .menu-icon {
@@ -32,12 +37,8 @@ body {
 
 .nav-elements {
   display: flex;
-  justify-content: flex-end; /* Mueve los botones a la derecha */
+  justify-content: center; /* Centra los elementos */
   align-items: center;
-  flex-grow: 1;
-  list-style: none; /* Elimina los puntos de los elementos de la lista */
-  padding: 0;
-  margin: 0;
 }
 
 .nav-elements .nextui-link {
@@ -51,7 +52,7 @@ body {
 }
 
 .nav-elements .nextui-link:hover {
-  background-color: #4c4654; /* Color de fondo al pasar el ratón */
+  background-color: #444147; /* Color de fondo al pasar el ratón */
 }
 
 @media (max-width: 768px) {
@@ -555,13 +556,48 @@ body {
 
 .contact h2 {
   text-align: center;
+  font-size: 2.5em; /* Ajustar el tamaño de la fuente */
+  font-weight: 600; /* Ajustar el peso de la fuente */
 }
 
 .hr-line-contact {
+  width: 400px; /* Asegurar que la línea horizontal tenga el mismo ancho que las otras */
+  height: 0;
+  border: 0 solid #eeedef;
+  border-top-width: 1px;
+  margin: 60px auto;
+  position: relative;
+  display: block;
+  clear: both;
+}
+
+.hr-line-contact:before {
+  content: " ";
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  background-color: #999;
+  left: 0;
+  bottom: -3px;
+  box-shadow: 400px 0 0 -1px #999, 400px 0 0 0 #aaa;
+}
+
+.hr-line-contact:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -25px; /* Ajusta la posición vertical de la imagen */
+  transform: translateX(-50%); /* Centra horizontalmente */
   width: 50px;
-  height: 4px;
-  background-color: #f39c12;
-  margin: 10px auto 20px auto;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-size: cover; /* Ajusta el tamaño de la imagen */
+  background-image: url('../src/assets/img/correo-electronico.jpg'); /* Ruta de la imagen */
+  box-shadow: 0 0 0 1px #eef, 0 0 5px;
 }
 
 .contact-container {

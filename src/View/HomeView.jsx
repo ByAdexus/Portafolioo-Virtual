@@ -16,9 +16,9 @@ const HomeView = () => {
           id: key,
           ...firebaseProjects[key],
           description: firebaseProjects[key].Description,
-          technologies: firebaseProjects[key].tecnologies.split(', '), // Separar la cadena por comas
           projectLink: firebaseProjects[key].projectLink,
-          image: firebaseProjects[key].image || "https://i.ibb.co/8B5ZtC2/888.jpg"
+          image: firebaseProjects[key].image || "https://i.ibb.co/8B5ZtC2/888.jpg",
+          icons: firebaseProjects[key].iconos || {} // Obtener los iconos directamente
         }));
 
         setProjects(firebaseProjectsArray);
@@ -38,16 +38,15 @@ const HomeView = () => {
     window.open(url, '_blank');
   };
 
-   // Filtrar los proyectos según la pestaña activa
   const filteredProjects = projects.filter(project => {
     if (activeTab === "all") {
-      return true; // Mostrar todos los proyectos
+      return true;
     } else if (activeTab === "web") {
-      return project.type === "web"; // Mostrar solo proyectos web
+      return project.type === "web";
     } else if (activeTab === "mobile") {
-      return project.type === "mobile"; // Mostrar solo proyectos móviles
+      return project.type === "mobile";
     }
-    return true; // Por defecto, mostrar todos los proyectos
+    return true;
   });
 
   return (
@@ -82,7 +81,6 @@ const HomeView = () => {
         </div>
       </div>
 
-      {/* Sección "Acerca de mí" */}
       <div id="about-section" className="about-me-section">
         <div className="about-me">
           <h2>Acerca de mí</h2>
@@ -102,7 +100,7 @@ const HomeView = () => {
           </div>
         </div>
       </div>
-{/* Sección de proyectos */}
+
       <div id="projects-section" className="projects-section">
         <div className="projects">
           <h2> Proyectos</h2>
@@ -119,11 +117,21 @@ const HomeView = () => {
                 className={`project-card ${index === 0 ? 'first-project' : ''}`}
                 onClick={() => handleProjectClick(project.projectLink)}
               >
-                <img src={project.image || "https://i.ibb.co/8B5ZtC2/888.jpg"} alt={project.name} />
+                <img src={project.image || "https://i.ibb.co/8B5ZtC2/888.jpg"} alt={project.name}  />
                 <div className="project-details">
                   <h3>{project.name}</h3>
                   <p>{project.description}</p>
-                  <p><strong>Tecnologías:</strong> {project.technologies.join(', ')}</p>
+                  <div className="technology-icons">
+                    {Object.keys(project.icons).map((tech, techIndex) => (
+                      <img
+                        key={techIndex}
+                        src={project.icons[tech]}
+                        alt={tech}
+                        className="technology-icon"
+                        style={{ width:65 }}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -131,7 +139,6 @@ const HomeView = () => {
         </div>
       </div>
 
-      {/* Sección "Contáctame" */}
       <div id="contact-section" className="contact-section">
         <div className="contact">
           <h2> Contáctame</h2>
@@ -159,7 +166,7 @@ const HomeView = () => {
             </div>
             <div className="contact-right">
               <div className="topic-text">Mandame un mensaje</div>
-              <p>Si estas interesado en algunas de mis cualidades, me encantarioa que me contactaras.</p>
+              <p>Si estás interesado en alguna de mis cualidades, me encantaría que me contactaras.</p>
               <form action="#">
                 <div className="input-box">
                   <input type="text" placeholder="Introduce tu nombre" required />
